@@ -5,7 +5,11 @@ import IssuesListContainer from './issues/IssuesListContainer';
 import IssueDetailContainer from './issues/IssueDetailContainer';
 import './issues/Issues.scss';
 
-
+/**
+ * tested for accessability with react-a11y
+ * import a11y from 'react-a11y';
+ * a11y(React);
+ */
 
 render((<Router history={browserHistory}>
   <Route path="/" component={IssuesListContainer} />

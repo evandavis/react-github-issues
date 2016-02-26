@@ -12,7 +12,7 @@ const IssueDetailContainer = React.createClass({
     }).isRequired
   },
   getInitialState() {
-    return {issue: {}};
+    return {issue: {user: {}}};
   },
   componentWillMount() {
     const {issueNumber} = this.props.params;

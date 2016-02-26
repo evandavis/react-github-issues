@@ -1,8 +1,7 @@
 import React from 'react';
-
-function prettyComment(text) {
-  return text.replace(/\r\n/g, '<br />');
-}
+import BodyText from './BodyText';
+import IssueLabel from './IssueLabel';
+import UserDisplay from './UserDisplay';
 
 const IssueDetail = React.createClass({
   propTypes: {
@@ -14,10 +13,14 @@ const IssueDetail = React.createClass({
 
     return (
       <div className="issue-detail-viewer">
+        <h1>{issue.title}</h1>
+        <ul className='labels'>
+          {issue.labels && issue.labels.map((label, index) => (<IssueLabel label={label} key={index} />))}
+        </ul>
         <div className="issue-detail">
-          <h1>{issue.title}</h1>
-          <span className={`issue-status status-${issue.status}`}>{issue.status}</span>
-          <p className="issue-body">{issue.body}</p>
+          <UserDisplay className={"issue-detail-reporter"} user={issue.user} />
+          <BodyText text={issue.body} />
+          <p className="issue-status-message">This issue is <span className={`issue-status status-${issue.state}`}>{issue.state}</span>.</p>
         </div>
         {comments && this.renderComments()}
       </div>
@@ -30,20 +33,12 @@ const IssueDetail = React.createClass({
         {comments.map((comment) => {
           return (
             <li className='comment' key={comment.id}>
-              {comment.body.split(/\r\n/).map((text) => {
-                return (<p>{text}</p>)
-              })}
+              <BodyText text={comment.body} className={'comment-body'} />
+              <UserDisplay className={"commentor"} user={comment.user} />
             </li>
           );
         })}
       </ul>
-    );
-  },
-  renderLabel(label, index) {
-    return (
-      <li className='label' style={{backgroundColor: `#${label.color}`}} key={index}>
-        {label.name}
-      </li>
     );
   }
 });

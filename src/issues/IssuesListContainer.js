@@ -1,45 +1,41 @@
 import React from 'react';
 import IssuesList from './IssuesList';
 
-function issuesByPageURL(page) {
-  return `https://api.github.com/repos/rails/rails/issues?per_page=25&page=${page}`
-}
+const INITIAL_URL="https://api.github.com/repos/rails/rails/issues?per_page=25";
 
 const IssuesListContainer = React.createClass({
+  propTypes: {},
   getInitialState() {
-    return {issues: [], page: 1};
+    return {issues: []};
   },
   componentWillMount() {
-      this.fetchIssues().then(this.loadIssues)
+      this.fetchIssues(INITIAL_URL)
       .catch(function(ex) {
         console.log('parsing failed', ex)
       });
   },
-  fetchIssues() {
-    const {page} = this.state;
-    return fetch(issuesByPageURL(page))
+  fetchIssues(url) {
+    return fetch(url)
       .then((response) => {
+        let links = {};
+        response.headers.get('Link').split(',').forEach((link) => {
+          let parts = link.split('; ');
+          links[parts[1].replace(/rel=|"/g, '')] = parts[0].replace(/[<>]/g, '');
+        });
+        this.setState({links});
         return response.json();
-      })
+      }).then((issues) => {
+        this.setState({issues});
+      });
   },
-  loadIssues(issues) {
-    this.setState({issues});
-  },
-  nextPage() {
-    let {page} = this.state;
-    page++;
-
-  },
-  previousPage() {
-    let {page} = this.state;
-    page--;
+  goToPage(pageUrl) {
+    this.fetchIssues(pageUrl);
   },
   render() {
     return (
       <IssuesList
         {...this.state}
-        nextPage={this.nextPage}
-        previousPage={this.previousPage}
+        goToPage={this.goToPage}
       />
     );
   }

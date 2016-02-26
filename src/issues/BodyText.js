@@ -2,7 +2,7 @@ import React from 'react';
 
 const USER_URL = 'https://github.com',
       USER_REGEX = /\B@([-a-z]+)/i,
-      WHITESPACE_REGEX = /\r\n/;
+      WHITESPACE_REGEX = /(?:\r\n)+/;
 
 const BodyText = ({text, className}) => {
   text = text || '';

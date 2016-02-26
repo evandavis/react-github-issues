@@ -1,7 +1,7 @@
 import React from 'react';
 import IssuesList from './IssuesList';
 
-const INITIAL_URL="https://api.github.com/repos/rails/rails/issues?per_page=25";
+const INITIAL_URL='https://api.github.com/repos/rails/rails/issues?per_page=25';
 
 const IssuesListContainer = React.createClass({
   propTypes: {},

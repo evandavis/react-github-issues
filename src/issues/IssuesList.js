@@ -13,6 +13,7 @@ function isEventLikeAClick(e) {
 const IssuesList = React.createClass({
   propTypes: {
     issues: React.PropTypes.array.isRequired,
+    links: React.PropTypes.object,
     goToPage: React.PropTypes.func.isRequired
   },
   handleClick(url, event) {

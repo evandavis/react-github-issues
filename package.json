@@ -29,6 +29,7 @@
     "karma-mocha": "^0.2.2",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sinon": "^1.0.4",
+    "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
     "node-sass": "^3.4.2",
     "phantomjs-prebuilt": "^2.1.4",
@@ -42,6 +43,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "component-truncate": "^1.0.0",
     "es6-promise": "^3.1.2",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",

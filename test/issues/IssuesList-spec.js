@@ -25,12 +25,14 @@ let issues = [{
 describe('IssueDetail', function() {
   let component,
       goToPage,
+      toggleStatus,
       shallow = createRenderer();
 
   beforeEach(() => {
     // realized I will not be able to test clicks on a shallow-rendered component
     goToPage = sinon.spy();
-    shallow.render(<IssuesList issues={issues} goToPage={goToPage} links={links} />);
+    toggleStatus = sinon.spy();
+    shallow.render(<IssuesList issues={issues} goToPage={goToPage} links={links} status={'open'} toggleStatus={toggleStatus}/>);
     component = shallow.getRenderOutput();
   });
 
@@ -43,13 +45,13 @@ describe('IssueDetail', function() {
   });
 
   it('renders a list of issues', () => {
-    expect(component.props.children[2].props.children.length).to.eql(1);
+    expect(component.props.children[3].props.children.length).to.eql(1);
   });
 
   it('renders title and the labels', () => {
     // this is a hideous selector
     // get the issues-list, get the first item inside that, get the H2, and select the children list inside THAT.
-    let titleAndLabels = component.props.children[2].props.children[0].props.children[0];
+    let titleAndLabels = component.props.children[3].props.children[0].props.children[0];
     expect(titleAndLabels.props.children[0]).to.eql(<Link to={`issues/${issues[0].number}`}>{issues[0].title}</Link>);
     expect(titleAndLabels.props.children[1].props.children).to.eql([
         <IssueLabel label={issues[0].labels[0]} key={'0'} />
@@ -57,12 +59,12 @@ describe('IssueDetail', function() {
   })
 
   it('truncates the text', () => {
-    let bodyText = component.props.children[2].props.children[0].props.children[1];
+    let bodyText = component.props.children[3].props.children[0].props.children[1];
     expect(bodyText.props.children).to.equal('Consectetur viral actually taxidermy, four dollar toast kogi fashion axe delectus. Voluptate cronut microdosing gastropub ennui. Snake...');
   });
 
   it('renders the reporter', () => {
-    let reporter = component.props.children[2].props.children[0].props.children[2];
+    let reporter = component.props.children[3].props.children[0].props.children[2];
     expect(reporter.props.children).to.eql([
       <span className='issue-number'>#{issues[0].number}</span>,
       ' reported by',

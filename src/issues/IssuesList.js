@@ -14,7 +14,9 @@ const IssuesList = React.createClass({
   propTypes: {
     issues: React.PropTypes.array.isRequired,
     links: React.PropTypes.object,
-    goToPage: React.PropTypes.func.isRequired
+    goToPage: React.PropTypes.func.isRequired,
+    status: React.PropTypes.string.isRequired,
+    toggleStatus: React.PropTypes.func.isRequired
   },
   handleClick(url, event) {
     if (isEventLikeAClick(event)) {
@@ -22,12 +24,16 @@ const IssuesList = React.createClass({
     }
   },
   render() {
-    const {issues, links} = this.props;
+    const {issues, links, status, toggleStatus} = this.props;
 
     return (
       <div className="issues-viewer">
         <h1>Issues</h1>
         {links && this.renderPager(links)}
+        <ul className="open-close-toggle">
+          <li><span onClick={toggleStatus.bind(null, 'open')} className={status === 'open' ? 'active' : ''}>Open</span></li>
+          <li><span onClick={toggleStatus.bind(null, 'closed')} className={status === 'closed' ? 'active' : ''}>Closed</span></li>
+        </ul>
         <ul className='issues-list'>
           {issues.map(this.renderIssue)}
         </ul>

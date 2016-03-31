@@ -6,7 +6,7 @@ const INITIAL_URL='https://api.github.com/repos/rails/rails/issues?per_page=25';
 const IssuesListContainer = React.createClass({
   propTypes: {},
   getInitialState() {
-    return {issues: []};
+    return {issues: [], status: 'open'};
   },
   componentWillMount() {
       this.fetchIssues(INITIAL_URL)
@@ -15,7 +15,8 @@ const IssuesListContainer = React.createClass({
       });
   },
   fetchIssues(url) {
-    return fetch(url)
+    const {status} = this.state;
+    return fetch(`${url}&state=${status}`)
       .then((response) => {
         let links = {};
         response.headers.get('Link').split(',').forEach((link) => {
@@ -31,11 +32,15 @@ const IssuesListContainer = React.createClass({
   goToPage(pageUrl) {
     this.fetchIssues(pageUrl);
   },
+  toggleStatus(status) {
+    this.setState({status}, this.fetchIssues.bind(this, INITIAL_URL));
+  },
   render() {
     return (
       <IssuesList
         {...this.state}
         goToPage={this.goToPage}
+        toggleStatus={this.toggleStatus}
       />
     );
   }

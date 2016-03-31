@@ -1,13 +1,14 @@
 var express = require('express');
 var path = require('path');
 var webpack = require('webpack');
-var config = require('./webpack.config');
-var WebpackDevServer = require('webpack-dev-server');
 
 var app = express();
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 var static_path = path.join(__dirname, 'static');
+
+var config,
+    WebpackDevServer;
 
 app.use(express.static(static_path))
   .get('/', function (req, res) {
@@ -20,7 +21,8 @@ app.use(express.static(static_path))
   });
 
 if (isDevelopment) {
-
+  config = require('./webpack.config');
+  WebpackDevServer = require('webpack-dev-server');
 
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,

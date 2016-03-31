@@ -13,6 +13,8 @@ config.plugins = config.plugins.concat([
   })
 ]);
 
-config.entry = ['./src/index']
+config.entry = ['./src/index'];
+
+config.output.path = path.join(__dirname, 'static');
 
 module.exports = config;

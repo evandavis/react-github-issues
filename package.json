@@ -6,7 +6,7 @@
     "node": "5.0.0"
   },
   "scripts": {
-    "postinstall": "webpack --config ./webpack-prod.config.js --progress --colors",
+    "postinstall": "webpack --config ./webpack.production-config.js --progress --colors",
     "start": "node server.js",
     "lint": "eslint src",
     "test": "karma start test/karma.conf.js --single-run",

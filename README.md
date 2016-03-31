@@ -1,6 +1,6 @@
-# Twitter Front-End Programming Exercise
+# React Github Issues
 
-A Github issue viewer written in React. Dependencies were built using Node v5.0.0.
+A Github issue viewer for the Rails project, written in React. Dependencies were built using Node v5.0.0.
 
 The project was started from [React Hot Boilerplate](https://github.com/gaearon/react-hot-boilerplate).
 

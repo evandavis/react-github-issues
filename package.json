@@ -1,8 +1,9 @@
 {
   "name": "front-end-exercise",
   "version": "1.0.0",
-  "description": "Twitter code exercise",
+  "description": "github issue viewer",
   "scripts": {
+    "postinstall": "webpack --config ./webpack-prod.config.js --progress --colors",
     "start": "node server.js",
     "lint": "eslint src",
     "test": "karma start test/karma.conf.js --single-run",
@@ -45,6 +46,7 @@
   "dependencies": {
     "component-truncate": "^1.0.0",
     "es6-promise": "^3.1.2",
+    "express": "^4.13.4",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-router": "^2.0.0",

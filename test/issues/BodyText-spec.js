@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRenderer, renderIntoDocument} from 'react-addons-test-utils';
-import BodyText from 'issues/BodyText';
+import BodyText from '~/issues/BodyText';
 
 const text = 'This is text with an email, test@email.com, and a github user @user.\r\n\r\nIt also has a line after a carriage return.';
 

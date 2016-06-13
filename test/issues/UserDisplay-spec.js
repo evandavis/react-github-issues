@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRenderer} from 'react-addons-test-utils';
-import UserDisplay from 'issues/UserDisplay';
+import UserDisplay from '~/issues/UserDisplay';
 
 let user = {
   login: 'testuser',

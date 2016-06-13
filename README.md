@@ -24,7 +24,7 @@ $ npm test # run tests once
 
 ## Assumptions, Caveats, etc
 ### Username + Avatar Links
-The requirements state only to link `@user` tags in text content but do not mention linking the user and avatar displays. On Github the avatar links do NOT go to the user profile, rather going to a list of issues opened by that user. As that page does not exist in the app, I have not included the links. This would be one of the first questions I asked in planning the work (and in a real project setting, I would ask well before delivery.)
+Avatars are not linked to the user. On Github the avatar links do NOT go to the user profile, rather going to a list of issues opened by that user. As that page does not exist in the app, I have not included the links.
 
 ### Cross-Browser Testing
 Browser testing is a deep, deep rabbit hole and an essential part of front-end development. For time, I have only tested this app in Chrome Canary.

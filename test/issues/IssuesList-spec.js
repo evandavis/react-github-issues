@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {createRenderer} from 'react-addons-test-utils';
-import IssuesList from 'issues/issuesList';
-import IssueLabel from 'issues/IssueLabel';
-import UserDisplay from 'issues/UserDisplay';
+import IssuesList from '~/issues/issuesList';
+import IssueLabel from '~/issues/IssueLabel';
+import UserDisplay from '~/issues/UserDisplay';
 
 let issues = [{
       title: 'A test issue',

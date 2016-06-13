@@ -1,9 +1,9 @@
 import React from 'react';
 import {createRenderer, renderIntoDocument} from 'react-addons-test-utils';
-import BodyText from 'issues/BodyText';
-import IssueDetail from 'issues/IssueDetail';
-import IssueLabel from 'issues/IssueLabel';
-import UserDisplay from 'issues/UserDisplay';
+import BodyText from '~/issues/BodyText';
+import IssueDetail from '~/issues/IssueDetail';
+import IssueLabel from '~/issues/IssueLabel';
+import UserDisplay from '~/issues/UserDisplay';
 
 let comments = [{
       body: 'comment text @user',

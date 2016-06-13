@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRenderer, renderIntoDocument} from 'react-addons-test-utils';
-import IssueLabel from 'issues/IssueLabel';
+import IssueLabel from '~/issues/IssueLabel';
 
 describe('IssueLabel', function() {
   let component,

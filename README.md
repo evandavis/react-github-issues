@@ -12,7 +12,7 @@ $ npm install # install dependencies
 $ npm start # start the app
 ```
 
-Point a browser at http://localhost:3000/.
+Point a browser at [http://localhost:3000/](http://localhost:3000).
 
 ## Tests
 Use the following commands to run linting and tests:
@@ -28,9 +28,6 @@ The requirements state only to link `@user` tags in text content but do not ment
 
 ### Cross-Browser Testing
 Browser testing is a deep, deep rabbit hole and an essential part of front-end development. For time, I have only tested this app in Chrome Canary.
-
-### Production Builds
-This project does not include a Webpack configuration for production builds. That configuration would produce a minified asset bundle and extract the CSS into an separate file, as well as providing the `NODE_ENV` for stripping dev-only code before publishing. The current dev configuration appends the styles with JavaScript.
 
 ### History State
 Current implementation loses the page state when going back to the list from an issue. I would love to fix this.

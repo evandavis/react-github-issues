@@ -9,8 +9,8 @@
     "postinstall": "webpack --config ./webpack.production-config.js --progress --colors",
     "start": "node server.js",
     "lint": "eslint src",
-    "test": "karma start test/karma.conf.js --single-run",
-    "test-watch": "karma start test/karma.conf.js"
+    "test": "karma start test/karma.conf.js --single-run --no-auto-watch",
+    "test-watch": "karma start test/karma.conf.js --auto-watch --no-single-run"
   },
   "license": "MIT",
   "private": true,
